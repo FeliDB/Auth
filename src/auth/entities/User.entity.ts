@@ -5,28 +5,33 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column("text", {
+  @Column("varchar", {
+    length: 255,
     nullable: false,
     unique: true,
   })
   email: string;
-  @Column("text", {
+  
+  @Column("varchar", {
+    length: 255,
     nullable: false,
   })
   password: string;
-  @Column("text", {
+  
+  @Column("varchar", {
+    length: 255,
     nullable: false,
     select: false,
   })
   fullName: string;
-  @Column("bool", {
+  
+  @Column("boolean", {
     default: true,
   })
   isActive: boolean;
 
   @Column("json", {
     nullable: false,
-    default: () => "'[\"user\"]'",
   })
   roles: string[];
 }
