@@ -23,4 +23,7 @@ export class CreateUserDto {
   @IsString()
   @MinLength(1)
   fullName: string;
+
+  @IsString({ each: true })
+  roles: string[];
 }

@@ -29,4 +29,19 @@ export class AuthController {
       user,
     };
   }
+
+  @Post("validate")
+  @Auth()
+  validateToken(@GetUser() user: User) {
+    return {
+      ok: true,
+      user: {
+        id: user.id,
+        email: user.email,
+        fullName: user.fullName,
+        roles: user.roles,
+        isActive: user.isActive
+      }
+    };
+  }
 }
