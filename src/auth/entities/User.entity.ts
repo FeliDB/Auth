@@ -30,8 +30,9 @@ export class User {
   })
   isActive: boolean;
 
-  @Column("json", {
+  @Column("varchar", {
+    length: 255,
     nullable: false,
   })
-  roles: string[];
-}
+  roles: string;
+} 

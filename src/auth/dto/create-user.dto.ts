@@ -25,5 +25,5 @@ export class CreateUserDto {
   fullName: string;
 
   @IsString({ each: true })
-  roles: string[];
+  roles: string;
 }
