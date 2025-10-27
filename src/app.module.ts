@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule } from "@nestjs/config";
+import { User } from "./auth/entities/User.entity";
 
 @Module({
   imports: [
@@ -9,11 +10,12 @@ import { ConfigModule } from "@nestjs/config";
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      database: process.env.DB_NAME,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
+      host: process.env.MYSQL_HOST,
+      port: Number(process.env.MYSQL_PORT),
+      database: process.env.MYSQL_DATABASE,
+      username: 'root',
+      entities: [User],
+      password: process.env.MYSQL_ROOT_PASS,
       autoLoadEntities: true,
       synchronize: true,
     }),
